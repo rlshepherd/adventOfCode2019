@@ -1,6 +1,9 @@
 package main
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestConvertMassToFuel(t *testing.T) {
 	cases := []struct {
@@ -8,13 +11,13 @@ func TestConvertMassToFuel(t *testing.T) {
 	}{
 		{12, 2},
 		{14, 2},
-		{1969, 654},
-		{100756, 33583},
+		{1969, 966},
+		{100756, 50346},
 	}
 	for _, c := range cases {
 		got := ConvertMassToFuel(c.in)
 		if got != c.want {
-			t.Errorf("ConvertMassToFuel(%q) == %q, want %q", c.in, got, c.want)
+			t.Errorf(fmt.Sprintf("ConvertMassToFuel(%d) == %d, want %d", c.in, got, c.want))
 		}
 	}
 }

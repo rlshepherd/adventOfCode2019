@@ -13,7 +13,10 @@ import (
 //ConvertMassToFuel returns an int divided by three, round down, subtract 2
 func ConvertMassToFuel(m int) int {
 	f := math.Floor(float64(m)/3.0) - 2.0
-	return int(f)
+	if f < 0.0 {
+		return int(0)
+	}
+	return int(f) + ConvertMassToFuel(int(f))
 }
 
 //Sum retruns the total converted fuel requirements.
