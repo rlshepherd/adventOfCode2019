@@ -32,9 +32,17 @@ Loop:
 }
 
 func main() {
-	integers := fileutils.ReadIntegerFile("input.txt", ",")
-	integers[1] = 12
-	integers[2] = 2
-	integerComputer(integers)
-	fmt.Println("0th integer: ", integers[0])
+Loop:
+	for noun := 0; noun < 100; noun++ {
+		for verb := 0; verb < 100; verb++ {
+			integers := fileutils.ReadIntegerFile("input.txt", ",")
+			integers[1] = noun
+			integers[2] = verb
+			integerComputer(integers)
+			if integers[0] == 19690720 {
+				fmt.Println("100 * ", noun, " + ", verb, " = ", 100*noun+verb)
+				break Loop
+			}
+		}
+	}
 }
