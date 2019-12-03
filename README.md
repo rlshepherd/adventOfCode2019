@@ -20,4 +20,4 @@ My first attempt at writing Go. Here are the resources used for each challenge.
 
 ### Things I don't like
 1. No obvious way to do dependency management for separate projects. Everything is in one workspace. Packages are saved in the workspace. A single go path. 
-2. Some types are automatically dereferenced, some are not. See [selectors](https://golang.org/ref/spec#Selectors). I was expecting to use pointers/references to pass arrays by value, but this is not needed. Because this is a C-like language and pointers are emphasized, this was surprising to me. Ultimately, it makes me use case easier but it seems inconsistent.
+2. Some types are automatically dereferenced, some are not. See [selectors](https://golang.org/ref/spec#Selectors). I was expecting to use pointers/references to pass arrays, but this is not needed. This was surprising to me. Ultimately, it makes me use case easier but it seems inconsistent.
