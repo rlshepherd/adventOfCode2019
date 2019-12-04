@@ -11,6 +11,9 @@ My first attempt at writing Go. Here are the resources used for each challenge.
 2. [Functions in Go](https://go101.org/article/function.html)
 3. [Pointers](https://www.golang-book.com/books/intro/8)
 
+### Day 3
+1. [Go source doc/codewalk/pig.go](https://golang.org/doc%2Fcodewalk%2Fpig.go)
+
 ## Notes
 
 ### Things I like
