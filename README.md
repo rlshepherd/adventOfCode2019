@@ -13,6 +13,10 @@ My first attempt at writing Go. Here are the resources used for each challenge.
 
 ### Day 3
 1. [Go source doc/codewalk/pig.go](https://golang.org/doc%2Fcodewalk%2Fpig.go)
+2. [Creating a slice with make](https://tour.golang.org/moretypes/13)
+3. [Two dimensional slices](https://golang.org/doc/effective_go.html#two_dimensional_slices)
+4. [Sort](https://golang.org/pkg/sort/)
+5. [Line sweeping technique](https://www.hackerearth.com/practice/math/geometry/line-sweep-technique/tutorial/)
 
 ## Notes
 

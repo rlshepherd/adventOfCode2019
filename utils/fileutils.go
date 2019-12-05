@@ -8,17 +8,21 @@ import (
 	"strings"
 )
 
-// ReadIntegerFile reads file and returns a slice of integers.
-func ReadIntegerFile(f string, sep string) (integers []int) {
-
+// ReadFile returns a byte slice from a file.
+func ReadFile(f string) (data []byte) {
 	data, err := ioutil.ReadFile(f)
 	if err != nil {
 		fmt.Println("File reading error", err)
 	}
+	return
+}
 
-	strings := strings.Split(string(data), sep)
+// ParseIntegerFile reads file and returns a slice of integers.
+func ParseIntegerFile(f string, sep string) (integers []int) {
+	data := ReadFile(f)
+	s := strings.Split(string(data), sep)
 
-	for _, j := range strings {
+	for _, j := range s {
 		k, err := strconv.Atoi(j)
 		if err != nil {
 			log.Fatal(err)
@@ -29,13 +33,9 @@ func ReadIntegerFile(f string, sep string) (integers []int) {
 	return
 }
 
-// ReadTokenFile accepts a filename and returns LinesOfInstructions
-func ReadTokenFile(f string) [][]string {
-	data, err := ioutil.ReadFile(f)
-	if err != nil {
-		fmt.Println("File reading error", err)
-	}
-
+// ParseIntrusctionFile accepts a filename and returns LinesOfInstructions
+func ParseIntrusctionFile(f string) [][]string {
+	data := ReadFile(f)
 	lines := strings.Split(string(data), "\n")
 	instructions := make([][]string, len(lines))
 
@@ -46,6 +46,7 @@ func ReadTokenFile(f string) [][]string {
 			instructions[i][j] = token
 		}
 	}
+
 	return instructions
 }
 

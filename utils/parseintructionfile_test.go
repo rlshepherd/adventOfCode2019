@@ -23,7 +23,7 @@ func TestReadTokenFile(t *testing.T) {
 		{"testData/readtokenfile_input_test2.txt", testResult2},
 	}
 	for _, c := range cases {
-		got := ReadTokenFile(c.input)
+		got := ParseIntrusctionFile(c.input)
 		for i, line := range got {
 			if !EqualStringSplices(line, c.want[i]) {
 				t.Errorf(fmt.Sprintf("ReadTokenFile(%q) == %q, want %q", c.input, got, c.want[i]))

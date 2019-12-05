@@ -14,7 +14,7 @@ func TestReadIntegerFile(t *testing.T) {
 		{"testData/readintegerfile_test_comma.txt", ",", []int{1, 2}},
 	}
 	for _, c := range cases {
-		got := ReadIntegerFile(c.file, c.seperator)
+		got := ParseIntegerFile(c.file, c.seperator)
 		if !Equal(got, c.want) {
 			t.Errorf(fmt.Sprintf("ReadIntegerFile(%q) == %q, want %d", c.file, got, c.want))
 		}

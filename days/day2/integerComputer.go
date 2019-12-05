@@ -35,7 +35,7 @@ func main() {
 Loop:
 	for noun := 0; noun < 100; noun++ {
 		for verb := 0; verb < 100; verb++ {
-			integers := fileutils.ReadIntegerFile("input.txt", ",")
+			integers := fileutils.ParseIntegerFile("input.txt", ",")
 			integers[1] = noun
 			integers[2] = verb
 			integerComputer(integers)
