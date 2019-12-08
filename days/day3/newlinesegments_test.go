@@ -21,7 +21,7 @@ func TestNewLineSegment(t *testing.T) {
 			t.Errorf(fmt.Sprintf("Error: %w", err))
 		}
 		if got != c.want {
-			t.Errorf(fmt.Sprintf("NewLineSegment(%d, %q) == %w, want %w", c.point, c.instruction, got, c.want))
+			t.Errorf(fmt.Sprintf("NewLineSegment(%d, %q) == %v, want %v", c.point, c.instruction, got, c.want))
 		}
 	}
 }

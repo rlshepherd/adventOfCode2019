@@ -32,18 +32,6 @@ var test5 = Path{
 	{Point{20, 30}, Point{30, 30}, true},
 }
 
-func EqualPaths(a Path, b Path) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i := 0; i < len(a); i++ {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
-}
-
 func TestEqualPath(t *testing.T) {
 	cases := []struct {
 		a    Path
@@ -54,8 +42,8 @@ func TestEqualPath(t *testing.T) {
 		{test1, test3, false},
 	}
 	for _, c := range cases {
-		if EqualPaths(c.a, c.b) != c.want {
-			t.Errorf(fmt.Sprintf("EqualPaths(%v,%v) = %t, want %t", c.a, c.b, EqualPaths(test1, test3), c.want))
+		if c.a.Equal(c.b) != c.want {
+			t.Errorf(fmt.Sprintf("EqualPaths(%v,%v) = %t, want %t", c.a, c.b, test1.Equal(test3), c.want))
 		}
 	}
 }
@@ -70,7 +58,7 @@ func TestSortPath(t *testing.T) {
 	}
 	for _, c := range cases {
 		sort.Sort(c.in)
-		if !EqualPaths(c.in, c.want) {
+		if !c.in.Equal(c.want) {
 			t.Errorf(fmt.Sprintf("Sorted = %v, want %v", c.in, c.want))
 		}
 	}
