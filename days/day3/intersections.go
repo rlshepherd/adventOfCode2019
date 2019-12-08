@@ -18,7 +18,7 @@ func FindIntersections(h Path, v Path) Points {
 	for _, hl := range h {
 		for _, vl := range v {
 			if Intersects(hl, vl) {
-				if hl.start.y != 0 && vl.start.x != 0 { // ignore origin
+				if !(hl.start.y == 0 && vl.start.x == 0) { // ignore origin
 					p = append(p, newIntersection(hl, vl))
 				}
 			}
