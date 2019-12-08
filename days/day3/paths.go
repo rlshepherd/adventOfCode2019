@@ -40,10 +40,11 @@ type LineSegment struct {
 	start    Point
 	end      Point
 	vertical bool
+	steps    int
 }
 
 // NewLineSegment accepts a Point and an instruction string in the format "U81", and returns a LineSegment
-func NewLineSegment(s Point, i string) (LineSegment, error) {
+func NewLineSegment(s Point, i string, steps int) (LineSegment, error) {
 	v := string(i[0])
 	n, err := strconv.Atoi(string(i[1:len(i)]))
 	if err != nil {
@@ -63,7 +64,7 @@ func NewLineSegment(s Point, i string) (LineSegment, error) {
 	default:
 		p = &Point{s.x - n, s.y}
 	}
-	return LineSegment{s, *p, s.x == p.x}, nil
+	return LineSegment{s, *p, s.x == p.x, steps + n}, nil
 }
 
 // Path implements the sort interface for a slice of LineSegments.
@@ -98,8 +99,9 @@ func NewPathsByOrientation(instructions [][]string) ([]Path, []Path) {
 		v[j] = make(Path, 0)
 
 		p := Point{0, 0}
+		r := 0
 		for _, i := range k {
-			s, err := NewLineSegment(p, i)
+			s, err := NewLineSegment(p, i, r)
 			if err != nil {
 				println("error!", err)
 			}
@@ -109,6 +111,7 @@ func NewPathsByOrientation(instructions [][]string) ([]Path, []Path) {
 				h[j] = append(h[j], s)
 			}
 			p = s.end
+			r = s.steps
 		}
 	}
 	return h, v

@@ -9,26 +9,31 @@ var h1 = LineSegment{
 	Point{0, 0},
 	Point{10, 0},
 	false,
+	10,
 }
 var h2 = LineSegment{
 	Point{20, 0},
 	Point{10, 0},
 	false,
+	20,
 }
 var v1 = LineSegment{
 	Point{5, -3},
 	Point{5, 3},
-	false,
+	true,
+	6,
 }
 var v2 = LineSegment{
 	Point{15, -3},
 	Point{15, 3},
-	false,
+	true,
+	6,
 }
 var v3 = LineSegment{
 	Point{5, 3},
 	Point{5, 10},
-	false,
+	true,
+	7,
 }
 
 var hPath = Path{h1, h2}
@@ -59,26 +64,37 @@ func TestNewIntersection(t *testing.T) {
 	cases := []struct {
 		h    LineSegment
 		v    LineSegment
-		want Point
+		want Intersection
 	}{
-		{h1, v1, Point{5, 0}},
-		{h2, v2, Point{15, 0}},
+		{h1, v1, Intersection{Point{5, 0}, 5}},
+		{h2, v2, Intersection{Point{15, 0}, 5}},
 	}
 	for _, c := range cases {
-		got := newIntersection(c.h, c.v)
+		got := newIntersection(c.h, c.v, 0)
 		if got != c.want {
 			t.Errorf(fmt.Sprintf("newIntersection(%v, %v) = %d, want %d", c.h, c.v, got, c.want))
 		}
 	}
 }
 
+var inters = Intersections{
+	Intersection{
+		Point{5, 0},
+		3,
+	},
+	Intersection{
+		Point{15, 0},
+		3,
+	},
+}
+
 func TestFindIntersection(t *testing.T) {
 	cases := []struct {
 		h    Path
 		v    Path
-		want Points
+		want Intersections
 	}{
-		{hPath, vPath, Points{Point{5, 0}, Point{15, 0}}},
+		{hPath, vPath, inters},
 	}
 	for _, c := range cases {
 		got := FindIntersections(c.h, c.v)

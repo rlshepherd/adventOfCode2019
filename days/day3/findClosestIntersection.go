@@ -21,10 +21,10 @@ func main() {
 	// }
 
 	// Find intersection points
-	p := make(Points, 0)
+	p := make(Intersections, 0)
 	p = append(p, FindIntersections(hPaths[0], vPaths[1])...)
 	p = append(p, FindIntersections(hPaths[1], vPaths[0])...)
 
 	sort.Sort(p)
-	println("Closest point: %w", p[0].manhattanDistance())
+	println("Closest point: %w", p[0].p.manhattanDistance())
 }

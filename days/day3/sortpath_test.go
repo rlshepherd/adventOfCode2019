@@ -7,29 +7,29 @@ import (
 )
 
 var test1 = Path{
-	{Point{10, 10}, Point{20, 10}, true},
-	{Point{1, 1}, Point{2, 1}, true},
+	{Point{10, 10}, Point{20, 10}, true, 10},
+	{Point{1, 1}, Point{2, 1}, true, 11},
 }
 var test2 = Path{
-	{Point{10, 10}, Point{20, 10}, true},
-	{Point{1, 1}, Point{2, 1}, true},
+	{Point{10, 10}, Point{20, 10}, true, 10},
+	{Point{1, 1}, Point{2, 1}, true, 10},
 }
 
 var test3 = Path{
-	{Point{1, 1}, Point{2, 1}, true},
-	{Point{10, 10}, Point{20, 10}, true},
+	{Point{1, 1}, Point{2, 1}, true, 10},
+	{Point{10, 10}, Point{20, 10}, true, 10},
 }
 
 var test4 = Path{
-	{Point{20, 30}, Point{30, 30}, true},
-	{Point{10, 10}, Point{20, 10}, true},
-	{Point{1, 1}, Point{2, 1}, true},
+	{Point{20, 30}, Point{30, 30}, true, 10},
+	{Point{10, 10}, Point{20, 10}, true, 10},
+	{Point{1, 1}, Point{2, 1}, true, 10},
 }
 
 var test5 = Path{
-	{Point{1, 1}, Point{2, 1}, true},
-	{Point{10, 10}, Point{20, 10}, true},
-	{Point{20, 30}, Point{30, 30}, true},
+	{Point{1, 1}, Point{2, 1}, true, 10},
+	{Point{10, 10}, Point{20, 10}, true, 10},
+	{Point{20, 30}, Point{30, 30}, true, 10},
 }
 
 func TestEqualPath(t *testing.T) {
